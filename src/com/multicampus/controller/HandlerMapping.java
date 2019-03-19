@@ -30,25 +30,14 @@ import com.bookshop.controller.customerorder.PrepareInsertCustomerOrderControlle
 import com.bookshop.controller.shoppingbasketlist.DeleteShoppingBasketListController;
 import com.bookshop.controller.shoppingbasketlist.GetShoppingBasketListController;
 import com.bookshop.controller.shoppingbasketlist.InsertShoppingBasketListController;
-import com.multicampus.controller.board.DeleteBoardController;
-import com.multicampus.controller.board.GetBoardController;
-import com.multicampus.controller.board.GetBoardListController;
-import com.multicampus.controller.board.InsertBoardController;
-import com.multicampus.controller.board.UpdateBoardController;
 
 public class HandlerMapping {
 	private Map<String, Controller> mappings;
 	
 	public HandlerMapping() {
 		mappings = new HashMap<String, Controller>();
-
-		mappings.put("/insertBoard.do",  new InsertBoardController());
-		mappings.put("/updateBoard.do",  new UpdateBoardController());
-		mappings.put("/deleteBoard.do",  new DeleteBoardController());
-		mappings.put("/getBoard.do",     new GetBoardController());
-		mappings.put("/getBoardList.do", new GetBoardListController());
 		
-		//±∏«ˆµ 
+		//Íµ¨ÌòÑÎê®
 		mappings.put("/main.do", 		 				new GetBookListController());
 		mappings.put("/getBook.do", 	 				new GetBookController());
 		mappings.put("/searchBookList.do", 				new SeachBookListController());
@@ -76,8 +65,8 @@ public class HandlerMapping {
 		mappings.put("/getCustomerOrderList.do", 		new GetCustomerOrderListController());	
 		mappings.put("/getCustomerOrderDetail.do",  	new GetCustomerOrderDetailController());
 		mappings.put("/deleteOrder.do",				  	new DeleteCustomerOrderController());
-		//±∏«ˆ æ» µ  
-		// ¡÷πÆ
+		//ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩ ÔøΩÔøΩ 
+		// ÔøΩ÷πÔøΩ
 
 		/*
 		 mappings.put("/bookSearch.do", new BookSearchController());
