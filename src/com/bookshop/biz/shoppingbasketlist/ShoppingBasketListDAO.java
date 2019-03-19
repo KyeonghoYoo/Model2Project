@@ -9,21 +9,22 @@ import java.util.List;
 import com.bookshop.biz.book.BookVO;
 import com.multicampus.biz.common.JDBCUtil;
 
+//2. DAO(Data Access Object) í´ë˜ìŠ¤
 public class ShoppingBasketListDAO {
-	// JDBC °ü·Ã º¯¼ö
+	// JDBC ê´€ë ¨ ë³€ìˆ˜
 		private Connection conn = null;
 		private PreparedStatement stmt = null;
 		private ResultSet rs = null;
 
-		// SQL ¸í·É¾î
+	// SQL ëª…ë ¹ì–´
 		private final String ShoppingBasketList_INSERT = "insert into shoppingbasketlist(customer_customerid, book_bookNum, adddate, qty, amount) values(?,?,now(),?,?)";
 		private final String ShoppingBasketList_DELETE = "delete from shoppingbasketlist where customer_customerid = ? and book_booknum = ?";
 		private final String ShoppingBasketList_LIST =   "select * from shoppingbasketlist a, book b where a.Book_BookNum = b.BookNum and a.Customer_CustomerId = ? order by book_booknum desc";
 
-		// CRUD °ü·Ã ¸Ş¼Òµå
-		// Àå¹Ù±¸´Ï µî·Ï
+	// CRUD ê´€ë ¨ ë©”ì†Œë“œ
+		// ì¥ë°”êµ¬ë‹ˆ ë“±ë¡
 		public void insertShoppingBasketList(ShoppingBasketListVO vo) {
-			System.out.println("===> JDBC ±â¹İÀ¸·Î insertShoppingBasketList() ±â´É Ã³¸®");
+			System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ insertShoppingBasketList() ê¸°ëŠ¥ ì²˜ë¦¬");
 			try {
 				conn = JDBCUtil.getConnection();
 				stmt = conn.prepareStatement(ShoppingBasketList_INSERT);
@@ -40,9 +41,9 @@ public class ShoppingBasketListDAO {
 		}
 
 
-		// Àå¹Ù±¸´Ï »èÁ¦
+		// ì¥ë°”êµ¬ë‹ˆ ì‚­ì œ
 		public void deleteShoppingBasketList(ShoppingBasketListVO vo) {
-			System.out.println("===> JDBC ±â¹İÀ¸·Î deleteShoppingBasketList() ±â´É Ã³¸®");
+			System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ deleteShoppingBasketList() ê¸°ëŠ¥ ì²˜ë¦¬");
 			try {
 				conn = JDBCUtil.getConnection();
 				stmt = conn.prepareStatement(ShoppingBasketList_DELETE);
@@ -57,9 +58,9 @@ public class ShoppingBasketListDAO {
 		}
 
 
-		// Àå¹Ù±¸´Ï ¸ñ·Ï °Ë»ö
+		// ì¥ë°”êµ¬ë‹ˆ ëª©ë¡ ê²€ìƒ‰
 		public List<ShoppingBasketListVO> getShoppingBasketList(String CustomerId) {
-			System.out.println("===> JDBC ±â¹İÀ¸·Î getShoppingBasketList() ±â´É Ã³¸®");
+			System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getShoppingBasketList() ê¸°ëŠ¥ ì²˜ë¦¬");
 			List<ShoppingBasketListVO> shoppingBasketList = new ArrayList<ShoppingBasketListVO>();
 			try {
 				conn = JDBCUtil.getConnection();

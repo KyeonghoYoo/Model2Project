@@ -19,8 +19,8 @@ public class InsertShoppingBasketListController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Àå¹Ù±¸´Ï µî·Ï ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ
+		System.out.println("ì¥ë°”êµ¬ë‹ˆ ë“±ë¡ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		CustomerVO customerVO = (CustomerVO)session.getAttribute("customer");
 		if(customerVO == null){
@@ -31,7 +31,7 @@ public class InsertShoppingBasketListController implements Controller {
 		int price = Integer.parseInt(request.getParameter("price"));
 		int qty = Integer.parseInt(request.getParameter("qty"));
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		ShoppingBasketListVO vo = new ShoppingBasketListVO();
 		vo.setCustomer_customerId(customerId);;
 		vo.setBook_bookNum(bookNum);
@@ -41,7 +41,7 @@ public class InsertShoppingBasketListController implements Controller {
 		ShoppingBasketListDAO shoppingBasketListDAO = new ShoppingBasketListDAO();
 		shoppingBasketListDAO.insertShoppingBasketList(vo);
 
-		// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		return "main.do";
 	}
 

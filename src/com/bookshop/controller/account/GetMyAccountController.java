@@ -14,16 +14,16 @@ import com.multicampus.controller.Controller;
 public class GetMyAccountController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("¸¶ÀÌÆäÀÌÁö ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ë§ˆì´í˜ì´ì§€ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		CustomerVO customerVO = (CustomerVO)session.getAttribute("customer");
 		if(customerVO == null){
 			return "signIn.jsp";
 		}
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		return "getMyAccount.jsp";
 
 	}

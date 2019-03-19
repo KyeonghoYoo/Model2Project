@@ -14,8 +14,8 @@ public class InsertCreditCardInfoController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Ä«µåÁ¤º¸ µî·Ï ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ
+		System.out.println("ì¹´ë“œì •ë³´ ë“±ë¡ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		String cardNum = "";
 		for(int i = 1; i < 4; i++){
@@ -33,7 +33,7 @@ public class InsertCreditCardInfoController implements Controller{
 		String customerId = customerVO.getCustomerId();
 		
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		CreditCardInfoVO vo = new CreditCardInfoVO();
 		vo.setCustomer_CustomerId(customerId);
 		vo.setCardNum(cardNum);
@@ -42,7 +42,7 @@ public class InsertCreditCardInfoController implements Controller{
 		CreditCardInfoDAO addressInfoDAO = new CreditCardInfoDAO();
 		boolean result = addressInfoDAO.insertCreditCardInfoInfo(vo);
 
-		// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		if (result) {
 			return "getCreditCardInfoList.do";
 		} else {

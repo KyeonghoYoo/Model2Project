@@ -8,19 +8,19 @@ import com.multicampus.biz.common.JDBCUtil;
 import com.multicampus.biz.user.UserVO;
 
 public class CustomerDAO {
-	// JDBC °ü·Ã º¯¼ö
+	// JDBC ê´€ë ¨ ë³€ìˆ˜
 		private Connection conn = null;
 		private PreparedStatement stmt = null;
 		private ResultSet rs = null;
 		
-		// SQL ¸í·É¾î
+		// SQL ëª…ë ¹ì–´
 		private final String CUSTOMER_GET = 		"select * from customer where customerid=? and password=?";
 		private final String CUSTOMER_INSERT = 		"insert into customer(customerid, password, name) values(?,?,?)";
 		
-		// CRUD °ü·Ã ¸Þ¼Òµå
-		// È¸¿ø °¡ÀÔ
+	// CRUD ê´€ë ¨ ë©”ì†Œë“œ
+	// íšŒì› ê°€ìž…
 		public boolean insertCustomer(CustomerVO vo) {
-			System.out.println("===> JDBC ±â¹ÝÀ¸·Î insertCustomer() ±â´É Ã³¸®");
+			System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ insertCustomer() ê¸°ëŠ¥ ì²˜ë¦¬");
 			try {
 				conn = JDBCUtil.getConnection();
 				stmt = conn.prepareStatement(CUSTOMER_INSERT);
@@ -36,9 +36,9 @@ public class CustomerDAO {
 			}
 			return true;
 		}
-		// È¸¿ø »ó¼¼ Á¶È¸
+		// È¸ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¸
 		public CustomerVO getCustomer(CustomerVO vo) {
-			System.out.println("===> JDBC ±â¹ÝÀ¸·Î getCustomer() ±â´É Ã³¸®");
+			System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getCustomer() ê¸°ëŠ¥ ì²˜ë¦¬");
 			CustomerVO customer = null;
 			try {
 				conn = JDBCUtil.getConnection();

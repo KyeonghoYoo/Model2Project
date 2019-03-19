@@ -12,8 +12,8 @@ import com.multicampus.controller.Controller;
 public class GetCreditCardInfoForOrderController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Ä«µåÁ¤º¸ Á¤º¸ »ó¼¼ º¸±â ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì¹´ë“œì •ë³´ ì •ë³´ ìƒì„¸ ë³´ê¸° ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		String cardNum = request.getParameter("cardNum");
 		CustomerVO customerVO = (CustomerVO)session.getAttribute("customer");
@@ -23,14 +23,14 @@ public class GetCreditCardInfoForOrderController implements Controller {
 		
 		String customerId = customerVO.getCustomerId();
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		CreditCardInfoVO vo = new CreditCardInfoVO();
 		vo.setCustomer_CustomerId(customerId);
 		vo.setCardNum(cardNum);;
 		CreditCardInfoDAO creditCardInfoDAO = new CreditCardInfoDAO();
 		CreditCardInfoVO creditCardInfoForOrder = creditCardInfoDAO.getCreditCardInfo(vo);
 
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		session.setAttribute("creditCardInfoForOrder", creditCardInfoForOrder);
 		return "insertOrder.jsp";
 

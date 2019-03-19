@@ -15,23 +15,23 @@ import com.multicampus.controller.Controller;
 public class SignInController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("·Î±×ÀÎ ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ
+		System.out.println("ë¡œê·¸ì¸ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ ì •ë³´ ì¶”ì¶œ
 		String id = request.getParameter("customerId");
 		String password = request.getParameter("password");
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		CustomerVO vo = new CustomerVO();
 		vo.setCustomerId(id);
 		vo.setPassword(password);
 		CustomerDAO customerDAO = new CustomerDAO();
 		CustomerVO customer = customerDAO.getCustomer(vo);
 		
-		// 3. ·Î±×ÀÎ Á¤º¸ Àü´Ş
+		// 3. ë¡œê·¸ì¸ ì •ë³´ ì„¸ì…˜ì— ì €ì¥
 		HttpSession session = request.getSession();
 		session.setAttribute("customer", customer);
 		
-		// 4. È­¸é ³×ºñ°ÔÀÌ¼Ç
+		// 4. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		if (customer != null) {
 			return "main.do";
 		} else {

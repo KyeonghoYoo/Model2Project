@@ -13,14 +13,14 @@ import com.multicampus.controller.Controller;
 public class SeachBookListController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Ã¥ °Ë»ö ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì±… ê²€ìƒ‰ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		String seachKeyword = (String) request.getParameter("searchKeyword");
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		BookDAO bookDAO = new BookDAO();
 		List<BookVO> bookList = bookDAO.searchBookList(seachKeyword);
 
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		HttpSession session = request.getSession();
 		session.removeAttribute("bookList");
 		session.setAttribute("bookList", bookList);

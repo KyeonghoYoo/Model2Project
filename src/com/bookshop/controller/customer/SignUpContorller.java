@@ -13,12 +13,12 @@ public class SignUpContorller implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("È¸¿ø°¡ÀÔ ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ
+		System.out.println("íšŒì›ê°€ì… ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		String customerId = request.getParameter("customerId");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		CustomerVO vo = new CustomerVO();
 		vo.setCustomerId(customerId);
 		vo.setPassword(password);
@@ -27,7 +27,7 @@ public class SignUpContorller implements Controller {
 		CustomerDAO customerDAO = new CustomerDAO();
 		boolean result = customerDAO.insertCustomer(vo);
 
-		// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+		// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 		if (result) {
 			return "signIn.jsp";
 		} else {

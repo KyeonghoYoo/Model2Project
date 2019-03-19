@@ -11,7 +11,7 @@ public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     public DispatcherServlet() {
-        System.out.println("===> DispatcherServlet »ı¼º");
+        System.out.println("===> DispatcherServlet ï¿½ï¿½ï¿½ï¿½");
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,17 +24,17 @@ public class DispatcherServlet extends HttpServlet {
 	}
 
 	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// 1. »ç¿ëÀÚÀÇ ¿äÃ» path Á¤º¸¸¦ ÃßÃâÇÑ´Ù.
+		// 1. ì‚¬ìš©ìì˜ ìš”ì²­ path ì •ë³´ë¥¼ ì¶”ì¶œí•œë‹¤.
 		String uri = request.getRequestURI();
 		String path = uri.substring(uri.lastIndexOf("/"));
 		System.out.println(path);
 		
-		// 2. ¿äÃ» path¿¡ ÇØ´çÇÏ´Â Controller¸¦ °Ë»öÇÏ¿© ½ÇÇàÇÑ´Ù.
-		HandlerMapping mapping = new HandlerMapping(); // »õ Å¬·¡½º
-		Controller ctrl = mapping.getController(path); // ÀÎÅÍÆäÀÌ½º ¹¬½ÃÀû Çüº¯È¯
+		// 2. 2. ìš”ì²­ pathì— í•´ë‹¹í•˜ëŠ” Controllerë¥¼ ê²€ìƒ‰í•˜ì—¬ ì‹¤í–‰í•œë‹¤.
+		HandlerMapping mapping = new HandlerMapping();
+		Controller ctrl = mapping.getController(path); // ì¸í„°í˜ì´ìŠ¤ ë¬µì‹œì  í˜•ë³€í™˜
 		String viewPage = ctrl.handleRequest(request, response);
 		
-		// 3. Controller°¡ ¸®ÅÏÇÑ È­¸éÀ¸·Î ³×ºñ°ÔÀÌ¼ÇÇÑ´Ù.
+		// 3. Controllerê°€ ë¦¬í„´í•œ í™”ë©´ìœ¼ë¡œ ë„¤ë¹„ê²Œì´ì…˜í•œë‹¤.
 		response.sendRedirect(viewPage);
 	}
 

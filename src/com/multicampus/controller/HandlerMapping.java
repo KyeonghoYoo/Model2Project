@@ -65,8 +65,8 @@ public class HandlerMapping {
 		mappings.put("/getCustomerOrderList.do", 		new GetCustomerOrderListController());	
 		mappings.put("/getCustomerOrderDetail.do",  	new GetCustomerOrderDetailController());
 		mappings.put("/deleteOrder.do",				  	new DeleteCustomerOrderController());
-		//���� �� �� 
-		// �ֹ�
+		
+		//미구현
 
 		/*
 		 mappings.put("/bookSearch.do", new BookSearchController());

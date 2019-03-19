@@ -16,8 +16,8 @@ public class DeleteCreditCardInfoController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Ä«µåÁ¤º¸ »èÁ¦ ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ
+		System.out.println("ì¹´ë“œì •ë³´ ì‚­ì œ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		
 		String cardNum = request.getParameter("cardNum");
@@ -30,14 +30,14 @@ public class DeleteCreditCardInfoController implements Controller{
 		String customerId = customerVO.getCustomerId();
 		
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		CreditCardInfoVO vo = new CreditCardInfoVO();
 		vo.setCustomer_CustomerId(customerId);
 		vo.setCardNum(cardNum);
 		CreditCardInfoDAO creditCardInfoDAO = new CreditCardInfoDAO();
 		boolean result = creditCardInfoDAO.deleteCreditCardInfo(vo);
 
-		// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+		// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 		if (result) {
 			return "getCreditCardInfoList.do";
 		} else {

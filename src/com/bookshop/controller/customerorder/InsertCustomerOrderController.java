@@ -19,8 +19,8 @@ import com.multicampus.controller.Controller;
 public class InsertCustomerOrderController implements Controller{
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("ÁÖ¹®µî·Ï ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì£¼ë¬¸ë“±ë¡ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		CustomerVO customerVO = (CustomerVO)session.getAttribute("customer");
 		List<ShoppingBasketListVO> shoppingBasketList = (List) session.getAttribute("shoppingBasketList");
@@ -58,7 +58,7 @@ public class InsertCustomerOrderController implements Controller{
 			customerOrderListVOs.add(customerOrderListVO);
 		}
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		CustomerOrderDAO customerOrderDAO = new CustomerOrderDAO();
 		customerOrderDAO.insertCustomerOrder(orderVO);
 		String lastestOrderNum = customerOrderDAO.getLastestOrderNum(orderVO).getOrderNum();
@@ -68,7 +68,7 @@ public class InsertCustomerOrderController implements Controller{
 			customerOrderListVOs.get(i).setCustomerOrder_OrderNum(lastestOrderNum);
 			customerOrderListDAO.insertCustomerOrderList(customerOrderListVOs.get(i));
 		}
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 		if(from.equals("book")){
 		
 		} else if(from.equals("shoppingBasketList")){

@@ -25,8 +25,8 @@ public class GetCustomerOrderDetailController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("ÁÖ¹® ¸ñ·Ï »ó¼¼ °Ë»ö ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì£¼ë¬¸ ëª©ë¡ ìƒì„¸ ê²€ìƒ‰ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		CustomerVO customerVO = (CustomerVO)session.getAttribute("customer");
 		String orderNum = request.getParameter("orderNum");
@@ -36,7 +36,7 @@ public class GetCustomerOrderDetailController implements Controller {
 		
 		String customerId = customerVO.getCustomerId();
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		CustomerOrderListVO vo = new CustomerOrderListVO();
 		vo.setCustomerOrder_OrderNum(orderNum);
 		CustomerOrderListDAO customerOrderListDAO = new CustomerOrderListDAO();
@@ -46,7 +46,7 @@ public class GetCustomerOrderDetailController implements Controller {
 		customerOrderVO.setOrderNum(orderNum);
 		CustomerOrderDAO customerOrderDAO = new CustomerOrderDAO();
 		CustomerOrderVO customerOrder = customerOrderDAO.getCustomerOrder(customerOrderVO);
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 		if(customerOrderListList != null){
 			session.setAttribute("customerOrder", customerOrder);
 			session.setAttribute("customerOrderListList", customerOrderListList);

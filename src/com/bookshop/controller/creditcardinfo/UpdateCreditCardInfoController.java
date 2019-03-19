@@ -16,8 +16,8 @@ public class UpdateCreditCardInfoController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Ä«µåÁ¤º¸ ¼öÁ¤ ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ
+		System.out.println("ì¹´ë“œ ì •ë³´ ìˆ˜ì • ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		String exCardNum = request.getParameter("exCardNum");
 		String cardNum = "";
@@ -36,7 +36,7 @@ public class UpdateCreditCardInfoController implements Controller{
 		String customerId = customerVO.getCustomerId();
 		
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ì²˜ë¦¬
 		CreditCardInfoVO vo = new CreditCardInfoVO();
 		vo.setCustomer_CustomerId(customerId);
 		vo.setCardNum(cardNum);
@@ -45,7 +45,7 @@ public class UpdateCreditCardInfoController implements Controller{
 		CreditCardInfoDAO addressInfoDAO = new CreditCardInfoDAO();
 		boolean result = addressInfoDAO.updateCreditCardInfo(vo, exCardNum);
 
-		// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		if (result) {
 			return "getCreditCardInfoList.do";
 		} else {

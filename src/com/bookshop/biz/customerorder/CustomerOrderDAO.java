@@ -9,14 +9,14 @@ import java.util.List;
 import com.bookshop.biz.addressinfo.AddressInfoVO;
 import com.multicampus.biz.common.JDBCUtil;
 
-//2. DAO(Data Access Object) Å¬·¡½º
+//2. DAO(Data Access Object) í´ë˜ìŠ¤
 public class CustomerOrderDAO {
-	// JDBC °ü·Ã º¯¼ö
+	// JDBC ê´€ë ¨ ë³€ìˆ˜
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	// SQL ¸í·É¾î
+	// SQL ëª…ë ¹ì–´
 	private final String CUSTOMERORDER_INSERT = "insert into customerorder(OrderNum, Customer_CustomerId, OrderDate, PaymentAmount, ZipCode,"
 												+ " BaseAddress, DetailAddress, CardNum, ExpirationDate, CardType) values((select count(*)+1 from customerorder a),"
 												+ "?,now(),?,?,?,?,?,?,?)";
@@ -28,10 +28,10 @@ public class CustomerOrderDAO {
 	
 	private final String CUSTOMERORDER_LASTESTORDERNUM = "select max(ordernum) from customerorder where customer_customerid = ?";
 
-	// CRUD °ü·Ã ¸Ş¼Òµå
-	// ÁÖ¹® µî·Ï
+	// CRUD ê´€ë ¨ ë©”ì†Œë“œ
+	// ì£¼ë¬¸ ë“±ë¡
 	public boolean insertCustomerOrder(CustomerOrderVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î insertCustomerOrder() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ insertCustomerOrder() ê¸°ëŠ¥ ì²˜ë¦¬");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(CUSTOMERORDER_INSERT);
@@ -53,9 +53,9 @@ public class CustomerOrderDAO {
 		return true;
 	}
 
-	// ¹è¼ÛÁö ¼öÁ¤
+	// ë°°ì†¡ì§€ ìˆ˜ì •
 	public boolean updateAddressInfo(AddressInfoVO vo, String zipCode) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î updateAddressInfo() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ updateAddressInfo() ê¸°ëŠ¥ ì²˜ë¦¬");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(CUSTOMERORDER_UPDATE);
@@ -74,9 +74,9 @@ public class CustomerOrderDAO {
 		return true;
 	}
 
-	// ¹è¼ÛÁö »èÁ¦
+	// ë°°ì†¡ì§€ ì‚­ì œ
 	public boolean deleteCustomerOrder(CustomerOrderVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î deleteCustomerOrder() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ deleteCustomerOrder() ê¸°ëŠ¥ ì²˜ë¦¬");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(CUSTOMERORDER_DELETE);
@@ -91,9 +91,9 @@ public class CustomerOrderDAO {
 		return true;
 	}
 
-	// ¿À´õ »ó¼¼ Á¶È¸
+	// ì˜¤ë” ìƒì„¸ ì¡°íšŒ
 	public CustomerOrderVO getCustomerOrder(CustomerOrderVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î getCustomerOrder() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getCustomerOrder() ê¸°ëŠ¥ ì²˜ë¦¬");
 		CustomerOrderVO customerOrder = null;
 		try {
 			conn = JDBCUtil.getConnection();
@@ -124,9 +124,9 @@ public class CustomerOrderDAO {
 		return customerOrder;
 	}
 
-	// ÁÖ¹® ¸ñ·Ï °Ë»ö
+	// ì£¼ë¬¸ ëª©ë¡ ê²€ìƒ‰
 	public List<CustomerOrderVO> getCustomerOrderList(CustomerOrderVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î getCustomerOrderList() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getCustomerOrderList() ê¸°ëŠ¥ ì²˜ë¦¬");
 		List<CustomerOrderVO> customerOrderList = new ArrayList<CustomerOrderVO>();
 		try {
 			conn = JDBCUtil.getConnection();
@@ -155,8 +155,9 @@ public class CustomerOrderDAO {
 		return customerOrderList;
 	}
 	
+	// ë§ˆì§€ë§‰ ì£¼ë¬¸ ë²ˆí˜¸ ì¡°íšŒ
 	public CustomerOrderVO getLastestOrderNum(CustomerOrderVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î getLastestOrderNum() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getLastestOrderNum() ê¸°ëŠ¥ ì²˜ë¦¬");
 		CustomerOrderVO customerOrder = null;
 		try {
 			conn = JDBCUtil.getConnection();

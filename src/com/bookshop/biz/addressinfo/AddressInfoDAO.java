@@ -9,24 +9,24 @@ import java.util.List;
 import com.bookshop.biz.book.BookVO;
 import com.multicampus.biz.common.JDBCUtil;
 
-//2. DAO(Data Access Object) Å¬·¡½º
+//2.  DAO(Data Access Object) í´ë˜ìŠ¤
 public class AddressInfoDAO {
-	// JDBC °ü·Ã º¯¼ö
+	// JDBC ê´€ë ¨ ë³€ìˆ˜
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	// SQL ¸í·É¾î
+	// SQL ëª…ë ¹ì–´
 	private final String ADDRESSINFO_INSERT = 	"insert into addressinfo(customer_customerid, zipcode, baseaddress, detailaddress) values(?,?,?,?)";
 	private final String ADDRESSINFO_UPDATE = 	"update addressinfo set zipcode=?, baseaddress=?, detailaddress=? where customer_customerid = ? and zipcode=?";
 	private final String ADDRESSINFO_DELETE = 	"delete from addressinfo where customer_customerid = ? and zipcode=?";
 	private final String ADDRESSINFO_GET = 		"select * from addressinfo where customer_customerid = ? and zipcode=?";
 	private final String ADDRESSINFO_LIST = 	"select * from addressinfo where Customer_CustomerId = ?";
 
-	// CRUD °ü·Ã ¸Ş¼Òµå
-	// ¹è¼ÛÁö µî·Ï
+	// CRUD ê´€ë ¨ ë©”ì†Œë“œ
+	// ë°°ì†¡ì§€ ë“±ë¡
 	public boolean insertAddressInfo(AddressInfoVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î insertAddressInfo() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ insertAddressInfo() ê¸°ëŠ¥ ì²˜ë¦¬");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(ADDRESSINFO_INSERT);
@@ -44,9 +44,9 @@ public class AddressInfoDAO {
 		return true;
 	}
 
-	// ¹è¼ÛÁö ¼öÁ¤
+	// ë°°ì†¡ì§€ ìˆ˜ì •
 	public boolean updateAddressInfo(AddressInfoVO vo, String zipCode) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î updateAddressInfo() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ updateAddressInfo() ê¸°ëŠ¥ ì²˜ë¦¬");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(ADDRESSINFO_UPDATE);
@@ -65,9 +65,9 @@ public class AddressInfoDAO {
 		return true;
 	}
 
-	// ¹è¼ÛÁö »èÁ¦
+	// ë°°ì†¡ì§€ ì‚­ì œ
 	public boolean deleteAddressInfo(AddressInfoVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î deleteAddressInfo() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ deleteAddressInfo() ê¸°ëŠ¥ ì²˜ë¦¬");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(ADDRESSINFO_DELETE);
@@ -83,9 +83,9 @@ public class AddressInfoDAO {
 		return true;
 	}
 
-	// ¹è¼ÛÁö »ó¼¼ Á¶È¸
+	// ë°°ì†¡ì§€ ìƒì„¸ ì¡°íšŒ
 	public AddressInfoVO getAddressInfo(AddressInfoVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î getAddressInfo() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getAddressInfo() ê¸°ëŠ¥ ì²˜ë¦¬");
 		AddressInfoVO addressInfo = null;
 		try {
 			conn = JDBCUtil.getConnection();
@@ -111,9 +111,9 @@ public class AddressInfoDAO {
 		return addressInfo;
 	}
 
-	// ¹è¼ÛÁö ¸ñ·Ï °Ë»ö
+	// ë°°ì†¡ì§€ ëª©ë¡ ê²€ìƒ‰
 	public List<AddressInfoVO> getAddressInfoList(AddressInfoVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î getAddressInfoList() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getAddressInfoList() ê¸°ëŠ¥ ì²˜ë¦¬");
 		List<AddressInfoVO> addressInfoList = new ArrayList<AddressInfoVO>();
 		try {
 			conn = JDBCUtil.getConnection();

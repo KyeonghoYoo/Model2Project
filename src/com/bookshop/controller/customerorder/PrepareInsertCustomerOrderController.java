@@ -20,8 +20,8 @@ import com.multicampus.controller.Controller;
 public class PrepareInsertCustomerOrderController implements Controller{
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("ÁÖ¹®È­¸é ÁØºñ ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì£¼ë¬¸í™”ë©´ ì¤€ë¹„ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		session.removeAttribute("addressInfoForOrder");
 		session.removeAttribute("creditCardInfoForOrder");
@@ -59,19 +59,19 @@ public class PrepareInsertCustomerOrderController implements Controller{
 		
 		String customerId = customerVO.getCustomerId();
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
-			//¹è¼ÛÁö Á¤º¸ ¸ñ·Ï Á¶È¸
+		// 2. DB ì—°ë™ ì²˜ë¦¬
+		//ë°°ì†¡ì§€ ì •ë³´ ëª©ë¡ ì¡°íšŒ
 		AddressInfoVO addressInfoVO = new AddressInfoVO();
 		addressInfoVO.setCustomer_CustomerId(customerId);
 		AddressInfoDAO addressInfoDAO = new AddressInfoDAO();
 		List<AddressInfoVO> addressInfoList = addressInfoDAO.getAddressInfoList(addressInfoVO);
-			//Ä«µå Á¤º¸ ¸ñ·Ï Á¶È¸
+		//ì¹´ë“œ ì •ë³´ ëª©ë¡ ì¡°íšŒ
 		CreditCardInfoVO creditCardInfoVO = new CreditCardInfoVO();
 		creditCardInfoVO.setCustomer_CustomerId(customerId);
 		CreditCardInfoDAO creditCardInfoDAO = new CreditCardInfoDAO();
 		List<CreditCardInfoVO> creditCardInfoList = creditCardInfoDAO.getCreditCardInfoList(creditCardInfoVO);
 		
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		session.setAttribute("shoppingBasketList", shoppingBasketList);
 		session.setAttribute("addressInfoList", addressInfoList);
 		session.setAttribute("creditCardInfoList", creditCardInfoList);

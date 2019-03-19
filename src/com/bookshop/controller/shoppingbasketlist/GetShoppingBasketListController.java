@@ -17,8 +17,8 @@ public class GetShoppingBasketListController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Àå¹Ù±¸´Ï ¸ñ·Ï °Ë»ö ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì¥ë°”êµ¬ë‹ˆ ëª©ë¡ ê²€ìƒ‰ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		CustomerVO customerVO = (CustomerVO)session.getAttribute("customer");
 		if(customerVO == null){
@@ -27,12 +27,12 @@ public class GetShoppingBasketListController implements Controller {
 		
 		String customerId = customerVO.getCustomerId();
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		ShoppingBasketListVO vo = new ShoppingBasketListVO();
 		ShoppingBasketListDAO shoppingBasketListDAO = new ShoppingBasketListDAO();
 		List<ShoppingBasketListVO> shoppingBasketList = shoppingBasketListDAO.getShoppingBasketList(customerId);
 
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 		if(shoppingBasketList != null){
 			session.setAttribute("shoppingBasketList", shoppingBasketList);
 			return "getShoppingBasketList.jsp";

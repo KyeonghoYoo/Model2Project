@@ -9,24 +9,24 @@ import java.util.List;
 import com.bookshop.biz.book.BookVO;
 import com.multicampus.biz.common.JDBCUtil;
 
-//2. DAO(Data Access Object) Å¬·¡½º
+//2. DAO(Data Access Object) í´ë˜ìŠ¤
 public class CreditCardInfoDAO {
-	// JDBC °ü·Ã º¯¼ö
+	// JDBC ê´€ë ¨ ë³€ìˆ˜
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	// SQL ¸í·É¾î
+	// SQL ëª…ë ¹ì–´
 	private final String CREDITCARDINFO_INSERT = 	"insert into creditcardinfo(customer_customerid, cardnum, expirationdate, cardtype) values(?,?,?,?)";
 	private final String CREDITCARDINFO_UPDATE = 	"update creditcardinfo set cardNum=?, expirationDate=?, cardType=? where cardNum = ?";
 	private final String CREDITCARDINFO_DELETE = 	"delete from creditcardinfo where cardNum = ?";
 	private final String CREDITCARDINFO_GET = 		"select * from creditcardinfo where cardNum = ?";
 	private final String CREDITCARDINFO_LIST = 		"select * from creditcardinfo where customer_CustomerId = ?";
 
-	// CRUD °ü·Ã ¸Ş¼Òµå
-	// Ä«µåÁ¤º¸ µî·Ï
+	// CRUD ê´€ë ¨ ë©”ì†Œë“œ
+	// ì¹´ë“œì •ë³´ ë“±ë¡
 	public boolean insertCreditCardInfoInfo(CreditCardInfoVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î insertCreditCardInfoInfo() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ insertCreditCardInfoInfo() ê¸°ëŠ¥ ì²˜ë¦¬");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(CREDITCARDINFO_INSERT);
@@ -44,9 +44,9 @@ public class CreditCardInfoDAO {
 		return true;
 	}
 
-	// Ä«µåÁ¤º¸ ¼öÁ¤
+	// ì¹´ë“œì •ë³´ ìˆ˜ì •
 	public boolean updateCreditCardInfo(CreditCardInfoVO vo, String exCardNum) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î updateCreditCardInfo() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ updateCreditCardInfo() ê¸°ëŠ¥ ì²˜ë¦¬");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(CREDITCARDINFO_UPDATE);
@@ -64,9 +64,9 @@ public class CreditCardInfoDAO {
 		return true;
 	}
 
-	// Ä«µåÁ¤º¸ »èÁ¦
+	// ì¹´ë“œì •ë³´ ì‚­ì œ
 	public boolean deleteCreditCardInfo(CreditCardInfoVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î deleteCreditCardInfo() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ deleteCreditCardInfo() ê¸°ëŠ¥ ì²˜ë¦¬");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(CREDITCARDINFO_DELETE);
@@ -81,9 +81,9 @@ public class CreditCardInfoDAO {
 		return true;
 	}
 
-	// Ä«µåÁ¤º¸ »ó¼¼ Á¶È¸
+	// ì¹´ë“œì •ë³´ ìƒì„¸ ì¡°íšŒ
 	public CreditCardInfoVO getCreditCardInfo(CreditCardInfoVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î getCreditCardInfo() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getCreditCardInfo() ê¸°ëŠ¥ ì²˜ë¦¬");
 		CreditCardInfoVO creditCardInfo = null;
 		try {
 			conn = JDBCUtil.getConnection();
@@ -106,9 +106,9 @@ public class CreditCardInfoDAO {
 		return creditCardInfo;
 	}
 
-	// Ä«µåÁ¤º¸ ¸ñ·Ï °Ë»ö
+	// ì¹´ë“œì •ë³´ ëª©ë¡ ê²€ìƒ‰
 	public List<CreditCardInfoVO> getCreditCardInfoList(CreditCardInfoVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î getCreditCardInfoList() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getCreditCardInfoList() ê¸°ëŠ¥ ì²˜ë¦¬");
 		List<CreditCardInfoVO> addressInfoList = new ArrayList<CreditCardInfoVO>();
 		try {
 			conn = JDBCUtil.getConnection();

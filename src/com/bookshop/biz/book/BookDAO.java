@@ -9,14 +9,14 @@ import java.util.List;
 import com.multicampus.biz.board.BoardVO;
 import com.multicampus.biz.common.JDBCUtil;
 
-//2. DAO(Data Access Object) Å¬·¡½º
+//2. DAO(Data Access Object) í´ë˜ìŠ¤
 public class BookDAO {
-	// JDBC °ü·Ã º¯¼ö
+	// JDBC ê´€ë ¨ ë³€ìˆ˜
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	// SQL ¸í·É¾î
+	// SQL ëª…ë ¹ë¬¸
 //	private final String BOOK_INSERT = "insert into book(title, writer, content, regDate) values(?,?,?,now())";
 //	private final String BOOK_UPDATE = "update book set title=?, content=? where seq=?";
 	// private final String BOARD_DELETE = "delete board where seq=?";
@@ -24,10 +24,10 @@ public class BookDAO {
 	private final String BOOK_GET = "select * from book where booknum=?";
 	private final String BOOK_LIST = "select * from book order by booknum desc";
 	private final String BOOK_SEARCH = "select * from book where bookname like CONCAT('%', ?, '%')";
-	// CRUD °ü·Ã ¸Ş¼Òµå
-	// Ã¥ µî·Ï
+	// CRUD ê´€ë ¨ ë©”ì†Œë“œ
+	// ì±… ë“±ë¡
 //	public void insertBook(BookVO vo) {
-//		System.out.println("===> JDBC ±â¹İÀ¸·Î insertBook() ±â´É Ã³¸®");
+//		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ insertBook() ê¸°ëŠ¥ ì²˜ë¦¬");
 //		try {
 //			conn = JDBCUtil.getConnection();
 //			stmt = conn.prepareStatement(BOOK_INSERT);
@@ -42,9 +42,9 @@ public class BookDAO {
 //		}
 //	}
 
-	// Ã¥ ¼öÁ¤
+	// ì±… ìˆ˜ì •
 //	public void updateBook(BookVO vo) {
-//		System.out.println("===> JDBC ±â¹İÀ¸·Î updateBook() ±â´É Ã³¸®");
+//		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ updateBook() ê¸°ëŠ¥ ì²˜ë¦¬");
 //		try {
 //			conn = JDBCUtil.getConnection();
 //			stmt = conn.prepareStatement(BOOK_UPDATE);
@@ -59,9 +59,9 @@ public class BookDAO {
 //		}
 //	}
 
-	// Ã¥ »èÁ¦
+	// ì±… ì‚­ì œ
 	public void deleteBook(BookVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î deleteBook() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ deleteBook() ê¸°ëŠ¥ ì²˜ë¦¬");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BOOK_DELETE);
@@ -74,9 +74,9 @@ public class BookDAO {
 		}
 	}
 
-	// Ã¥ »ó¼¼ Á¶È¸
+	// ì±… ìƒì„¸ ì¡°íšŒ
 	public BookVO getBook(BookVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î getBook() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getBook() ê¸°ëŠ¥ ì²˜ë¦¬");
 		BookVO book = null;
 		try {
 			conn = JDBCUtil.getConnection();
@@ -102,9 +102,9 @@ public class BookDAO {
 		return book;
 	}
 
-	// Ã¥ ¸ñ·Ï °Ë»ö
+	// ì±… ëª©ë¡ ê²€ìƒ‰
 	public List<BookVO> getBookList(BookVO vo) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î getBookList() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ getBookList() ê¸°ëŠ¥ ì²˜ë¦¬");
 		List<BookVO> bookList = new ArrayList<BookVO>();
 		try {
 			conn = JDBCUtil.getConnection();
@@ -127,9 +127,9 @@ public class BookDAO {
 		return bookList;
 	}
 	
-	// Ã¥ °Ë»ö
+	// ì±… ê²€ìƒ‰
 	public List<BookVO> searchBookList(String searchKeyword) {
-		System.out.println("===> JDBC ±â¹İÀ¸·Î searchBookList() ±â´É Ã³¸®");
+		System.out.println("===> JDBC ê¸°ë°˜ìœ¼ë¡œ searchBookList() ê¸°ëŠ¥ ì²˜ë¦¬");
 		List<BookVO> bookList = new ArrayList<BookVO>();
 		try {
 			conn = JDBCUtil.getConnection();

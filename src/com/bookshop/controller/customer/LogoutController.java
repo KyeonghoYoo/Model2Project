@@ -9,8 +9,8 @@ import com.multicampus.controller.Controller;
 public class LogoutController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("·Î±×¾Æ¿ô ±â´É Ã³¸®");
-		// 3. ·Î±×ÀÎ Á¤º¸ Àü´Ş
+		System.out.println("ë¡œê·¸ì•„ì›ƒ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// ë¡œê·¸ì¸ ì •ë³´ ì „ë‹¬
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return "main.do";

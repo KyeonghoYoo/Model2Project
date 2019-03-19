@@ -13,8 +13,8 @@ public class DeleteCustomerOrderController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("¹è¼ÛÁö»èÁ¦ ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ
+		System.out.println("ë°°ì†¡ì§€ì‚­ì œ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		
 		String orderNum = request.getParameter("orderNum");
@@ -27,13 +27,13 @@ public class DeleteCustomerOrderController implements Controller{
 		String customerId = customerVO.getCustomerId();
 		
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		CustomerOrderVO vo = new CustomerOrderVO();
 		vo.setOrderNum(orderNum);
 		CustomerOrderDAO customerOrderDAO = new CustomerOrderDAO();
 		boolean result = customerOrderDAO.deleteCustomerOrder(vo);
 
-		// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+		// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 		if (result) {
 			return "getCustomerOrderList.do";
 		} else {

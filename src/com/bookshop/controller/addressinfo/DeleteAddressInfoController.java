@@ -14,8 +14,8 @@ public class DeleteAddressInfoController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("¹è¼ÛÁö»èÁ¦ ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ
+		System.out.println("ë°°ì†¡ì§€ì‚­ì œ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		
 		String zipCode = request.getParameter("zipCode");
@@ -28,14 +28,14 @@ public class DeleteAddressInfoController implements Controller{
 		String customerId = customerVO.getCustomerId();
 		
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		AddressInfoVO vo = new AddressInfoVO();
 		vo.setCustomer_CustomerId(customerId);
 		vo.setZipCode(zipCode);
 		AddressInfoDAO addressInfoDAO = new AddressInfoDAO();
 		boolean result = addressInfoDAO.deleteAddressInfo(vo);
 
-		// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+		// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 		if (result) {
 			return "getAddressInfoList.do";
 		} else {

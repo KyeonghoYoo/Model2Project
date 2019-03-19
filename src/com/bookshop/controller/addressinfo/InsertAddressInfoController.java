@@ -14,8 +14,8 @@ public class InsertAddressInfoController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("¹è¼ÛÁöµî·Ï ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ
+		System.out.println("ë°°ì†¡ì§€ë“±ë¡ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		
 		String zipCode = request.getParameter("zipCode");
@@ -30,7 +30,7 @@ public class InsertAddressInfoController implements Controller{
 		String customerId = customerVO.getCustomerId();
 		
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		AddressInfoVO vo = new AddressInfoVO();
 		vo.setCustomer_CustomerId(customerId);
 		vo.setZipCode(zipCode);
@@ -39,7 +39,7 @@ public class InsertAddressInfoController implements Controller{
 		AddressInfoDAO addressInfoDAO = new AddressInfoDAO();
 		boolean result = addressInfoDAO.insertAddressInfo(vo);
 
-		// 3. È­¸é ³×ºñ°ÔÀÌ¼Ç
+		// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 		if (result) {
 			return "getAddressInfoList.do";
 		} else {

@@ -13,20 +13,20 @@ public class DeleteShoppingBasketListController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Àå¹Ù±¸´Ï ¸ñ·Ï °Ë»ö ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì¥ë°”êµ¬ë‹ˆ ëª©ë¡ ê²€ìƒ‰ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		String bookNum = request.getParameter("bookNum");
 		CustomerVO customerVO = (CustomerVO) session.getAttribute("customer");
 		
-		// ºñ·Î±×ÀÎÀÌ¸é ·Î±×ÀÎ È­¸éÀ¸·Î ÀÌµ¿
+		// ë¹„ë¡œê·¸ì¸ì´ë¼ë©´ ë¡œê·¸ì¸ í™”ë©´ìœ¼ë¡œ ì´ë™
 		if(customerVO == null){
 			return "signIn.jsp";
 		}
 		
 		String customerId = customerVO.getCustomerId();
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		ShoppingBasketListVO vo = new ShoppingBasketListVO();
 		vo.setCustomer_customerId(customerId);
 		vo.setBook_bookNum(bookNum);
@@ -34,7 +34,7 @@ public class DeleteShoppingBasketListController implements Controller {
 		ShoppingBasketListDAO shoppingBasketListDAO = new ShoppingBasketListDAO();
 		shoppingBasketListDAO.deleteShoppingBasketList(vo);
 
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		return "getShoppingBasketList.do";
 	}
 

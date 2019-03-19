@@ -13,15 +13,15 @@ import com.multicampus.controller.Controller;
 public class GetBookListController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Ã¥ ¸ñ·Ï °Ë»ö ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì±… ëª©ë¡ ê²€ìƒ‰ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		BookVO vo = new BookVO();
 		BookDAO bookDAO = new BookDAO();
 		List<BookVO> bookList = bookDAO.getBookList(vo);
 
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		HttpSession session = request.getSession();
 		session.setAttribute("bookList", bookList);
 		return "main.jsp";

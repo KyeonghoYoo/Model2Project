@@ -16,8 +16,8 @@ import com.multicampus.controller.Controller;
 public class GetAddressInfoForOrderController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("ÁÖ¹® È­¸éÀÇ ¹è¼ÛÁöÁ¤º¸ °Ë»ö ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì£¼ë¬¸ í™”ë©´ì˜ ë°°ì†¡ì§€ì •ë³´ ê²€ìƒ‰ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		String zipCode = request.getParameter("zipCode");
 		CustomerVO customerVO = (CustomerVO)session.getAttribute("customer");
@@ -27,14 +27,14 @@ public class GetAddressInfoForOrderController implements Controller {
 		
 		String customerId = customerVO.getCustomerId();
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		AddressInfoVO vo = new AddressInfoVO();
 		vo.setCustomer_CustomerId(customerId);
 		vo.setZipCode(zipCode);
 		AddressInfoDAO addressInfoDAO = new AddressInfoDAO();
 		AddressInfoVO addressInfoForOrder = addressInfoDAO.getAddressInfo(vo);
 
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		session.setAttribute("addressInfoForOrder", addressInfoForOrder);
 		return "insertOrder.jsp";
 

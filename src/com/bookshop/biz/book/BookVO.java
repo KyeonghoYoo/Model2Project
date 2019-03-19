@@ -1,6 +1,6 @@
 package com.bookshop.biz.book;
 
-//1. VO(Value Object == DTO(Data Transfer Object)) Å¬·¡½º
+//1. VO(Value Object == DTO(Data Transfer Object)) í´ë˜ìŠ¤
 public class BookVO {
 	private String bookNum;
 	private String bookName;

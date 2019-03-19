@@ -11,16 +11,17 @@ import com.multicampus.controller.Controller;
 public class GetBookController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("±Û »ó¼¼ Á¶È¸ ±â´É Ã³¸®");
+		System.out.println("ê¸€ ìƒì„¸ ì¡°íšŒ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì •ë³´ ì¶”ì¶œ
 		String bookNum = request.getParameter("bookNum");
 
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		BookVO vo = new BookVO();
 		vo.setBookNum(bookNum);
 		BookDAO bookDAO = new BookDAO();;
 		BookVO book = bookDAO.getBook(vo);
 		
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		HttpSession session = request.getSession();
 		session.setAttribute("book", book);
 		return "getBook.jsp";

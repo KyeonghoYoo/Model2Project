@@ -16,8 +16,8 @@ import com.multicampus.controller.Controller;
 public class GetCreditCardInfoListController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Ä«µåÁ¤º¸ ¸ñ·Ï °Ë»ö ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì¹´ë“œì •ë³´ ëª©ë¡ ê²€ìƒ‰ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		CustomerVO customerVO = (CustomerVO)session.getAttribute("customer");
 		if(customerVO == null){
@@ -26,13 +26,13 @@ public class GetCreditCardInfoListController implements Controller {
 		
 		String customerId = customerVO.getCustomerId();
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		CreditCardInfoVO vo = new CreditCardInfoVO();
 		vo.setCustomer_CustomerId(customerId);
 		CreditCardInfoDAO creditCardInfoDAO = new CreditCardInfoDAO();
 		List<CreditCardInfoVO> creditCardInfoList = creditCardInfoDAO.getCreditCardInfoList(vo);
 
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. ì‘ë‹µ í™”ë©´ êµ¬ì„±
 		session.setAttribute("creditCardInfoList", creditCardInfoList);
 		return "getCreditCardInfoList.jsp";
 

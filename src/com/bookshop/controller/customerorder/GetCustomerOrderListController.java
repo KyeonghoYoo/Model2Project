@@ -19,8 +19,8 @@ public class GetCustomerOrderListController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Àå¹Ù±¸´Ï ¸ñ·Ï °Ë»ö ±â´É Ã³¸®");
-		// 1. »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ ÃßÃâ(°Ë»ö ±â´ÉÀº ³ªÁß¿¡...)
+		System.out.println("ì¥ë°”êµ¬ë‹ˆ ëª©ë¡ ê²€ìƒ‰ ê¸°ëŠ¥ ì²˜ë¦¬");
+		// 1. ì‚¬ìš©ì ì…ë ¥ì •ë³´ ì¶”ì¶œ
 		HttpSession session = request.getSession();
 		CustomerVO customerVO = (CustomerVO)session.getAttribute("customer");
 		if(customerVO == null){
@@ -29,13 +29,13 @@ public class GetCustomerOrderListController implements Controller {
 		
 		String customerId = customerVO.getCustomerId();
 		
-		// 2. DB ¿¬µ¿ Ã³¸®
+		// 2. DB ì—°ë™ ì²˜ë¦¬
 		CustomerOrderVO vo = new CustomerOrderVO();
 		vo.setCustomer_CustomerId(customerId);
 		CustomerOrderDAO customerOrderDAO = new CustomerOrderDAO();
 		List<CustomerOrderVO> customerOrderList = customerOrderDAO.getCustomerOrderList(vo);
 
-		// 3. ÀÀ´ä È­¸é ±¸¼º
+		// 3. í™”ë©´ ë„¤ë¹„ê²Œì´ì…˜
 		if(customerOrderList != null){
 			session.setAttribute("customerOrderList", customerOrderList);
 			return "getCustomerOrderList.jsp";
